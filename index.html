@@ -476,25 +476,32 @@
 
             <p>Bitte fülle das Formular aus, damit ich planen kann.</p>
 
-            <form id="rsvp-form" onsubmit="event.preventDefault(); submitForm();">
-              <label class="form-label">Name*</label>
-              <input type="text" id="name" class="form-input" required />
+           <form id="rsvp-form"
+      action="https://formspree.io/f/xblnyvwg"
+      method="POST">
+  
+  <label class="form-label">Name*</label>
+  <input type="text" name="name" class="form-input" required />
 
-              <label class="form-label">Teilnahme*</label>
-              <div class="form-radio-group">
-                <label><input type="radio" name="teilnahme" value="ja" required /> Ich komme</label>
-                <label><input type="radio" name="teilnahme" value="nein" required /> Ich kann leider nicht</label>
-              </div>
+  <label class="form-label">Teilnahme*</label>
+  <div class="form-radio-group">
+    <label><input type="radio" name="teilnahme" value="ja" required> Ich komme</label>
+    <label><input type="radio" name="teilnahme" value="nein" required> Ich kann leider nicht</label>
+  </div>
 
-              <label class="form-label">Nachricht (optional)</label>
-              <textarea id="message" class="form-input" placeholder="z. B. wenn du jemanden mitbringst, Allergien hast etc."></textarea>
+  <label class="form-label">Nachricht (optional)</label>
+  <textarea name="message" class="form-input"
+            placeholder="z. B. wenn du jemanden mitbringst, Allergien hast etc."></textarea>
 
-              <button type="submit" class="form-button">Zusage senden</button>
-            </form>
+  <button type="submit" class="form-button">Absenden</button>
 
-            <p id="rsvp-success" style="display:none; margin-top:1rem; color:#6aff6a; font-weight:600;">
-              Danke! Deine Antwort ist angekommen.
-            </p>
+</form>
+
+<p id="rsvp-success"
+   style="display:none; margin-top:1rem; color:#6aff6a; font-weight:600;">
+  Danke! Deine Antwort ist angekommen.
+</p>
+
           </section>
 
         </div> <!-- content-wrapper -->
