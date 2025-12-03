@@ -748,13 +748,6 @@
             <div class="form-wrapper">
              <form id="rsvp-form" method="POST" action="https://formspree.io/f/xblnyvwg">
 
-                <!--
-                  HINWEIS:
-                  Ersetze die action-URL oben durch den echten Endpoint
-                  deines Formular-/Automatisierungsdienstes
-                  (z. B. Formspree, Getform, Netlify Forms, eigener Server usw.).
-                -->
-
                 <div class="field-row">
                   <div class="field">
                     <label for="name">
@@ -862,5 +855,13 @@
       </div>
     </div>
   </main>
+  <div id="status-message" class="status-message">
+  Danke für deine Rückmeldung! Deine Antwort ist bei mir angekommen.
+</div>
+
+<div id="status-message-error" class="status-message error">
+  Etwas ist schiefgelaufen – bitte versuche es später erneut.
+</div>
+
 </body>
 </html>
