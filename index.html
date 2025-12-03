@@ -24,11 +24,14 @@
       --max-width: 960px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
       background: radial-gradient(circle at top, #181822, #020209 60%);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
@@ -42,20 +45,27 @@
       justify-content: center;
     }
 
-    .page { width: 100%; max-width: var(--max-width); }
+    .page {
+      width: 100%;
+      max-width: var(--max-width);
+    }
+
+    /* Card / Layout */
 
     .card {
       background: radial-gradient(circle at top left, #15151f, #050509 55%);
       border-radius: 24px;
       box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       padding: 1.5rem 1.25rem 2rem;
       position: relative;
       overflow: hidden;
     }
 
     @media (min-width: 768px) {
-      .card { padding: 2.5rem 2.25rem 3rem; }
+      .card {
+        padding: 2.5rem 2.25rem 3rem;
+      }
     }
 
     .card::before {
@@ -63,20 +73,42 @@
       position: absolute;
       inset: -40%;
       background:
-        radial-gradient(circle at 0% 0%, rgba(212,175,55,0.2), transparent 50%),
-        radial-gradient(circle at 100% 0%, rgba(176,42,55,0.12), transparent 60%);
+        radial-gradient(circle at 0% 0%, rgba(212, 175, 55, 0.2), transparent 50%),
+        radial-gradient(circle at 100% 0%, rgba(176, 42, 55, 0.12), transparent 60%);
       opacity: 0.7;
       pointer-events: none;
     }
 
-    .card-inner { position: relative; z-index: 1; }
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
 
-    h1,h2,h3,h4 { margin: 0; font-weight: 600; letter-spacing: 0.03em; }
+    /* Utility */
 
-    p { margin: 0.35rem 0 0.75rem; font-size: 0.98rem; color: var(--text-muted); }
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
 
-    section { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); }
-    section:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+    p {
+      margin: 0.35rem 0 0.75rem;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+    }
+
+    section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    section:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
 
     .section-header {
       display: inline-flex;
@@ -103,368 +135,409 @@
       font-size: 0.8rem;
     }
 
-    .section-title { font-size: 1.1rem; }
+    .section-title {
+      font-size: 1.1rem;
+    }
 
-    /* Countdown */
-    #countdown-box {
+    .muted {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
       margin-top: 1rem;
-      padding: 1.2rem;
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(0,0,0,0.45);
-      border-radius: 1rem;
     }
 
-    #countdown-title {
-      color: var(--gold);
-      text-transform: uppercase;
+    .pill {
       font-size: 0.8rem;
-      letter-spacing: 0.18em;
-      margin-bottom: 0.4rem;
-    }
-
-    #countdown {
-      font-size: 1.7rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-
-    /* Timeline */
-    .timeline { list-style: none; margin: 0.5rem 0 0; padding: 0; }
-    .timeline li {
-      position: relative;
-      padding-left: 1.4rem;
-      margin-bottom: 0.4rem;
-      font-size: 0.95rem;
-    }
-    .timeline li::before {
-      content: "";
-      position: absolute;
-      left: 0.35rem;
-      top: 0.45rem;
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--gold);
-      box-shadow: 0 0 0 4px rgba(212,175,55,0.15);
-    }
-
-    /* Dresscode Tags */
-    .dresscode-ideas { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-
-    .dresscode-tag {
       padding: 0.4rem 0.75rem;
       border-radius: 999px;
-      background: rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.12);
-      font-size: 0.84rem;
-    }
-
-    /* Maps */
-    .maps-wrapper {
-      margin-top: 0.75rem;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: #000;
-      position: relative;
-    }
-
-    .maps-iframe { width: 100%; height: 240px; border: 0; filter: grayscale(40%); }
-
-    .maps-placeholder-note {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.7);
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.7);
-      pointer-events: none;
-    }
-
-    /* FAQ */
-    .faq-list { display: grid; gap: 0.9rem; }
-
-    .faq-item-question { font-weight: 600; margin-bottom: 0.1rem; }
-
-    /* Form */
-    .form-wrapper { margin-top: 0.75rem; max-width: 540px; }
-    form { display: grid; gap: 0.9rem; }
-
-    .field { display: flex; flex-direction: column; gap: 0.25rem; }
-
-    .radio-group { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-    .radio-pill {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.45);
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.5);
-      cursor: pointer;
+      gap: 0.3rem;
+      white-space: nowrap;
     }
 
-    button[type="submit"] {
-      padding: 0.7rem 1.6rem;
-      border-radius: 999px;
-      border: none;
-      font-size: 0.95rem;
-      font-weight: 600;
-      background: linear-gradient(135deg, var(--gold), #f5d97a);
-      color: #111;
-      cursor: pointer;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.7);
+    .pill span {
+      font-size: 0.85rem;
     }
 
-    .status-message {
-      display: none;
-      padding: 0.7rem;
-      border-radius: 0.8rem;
-      background: rgba(22,163,74,0.08);
-      border: 1px solid rgba(34,197,94,0.4);
-      color: #bbf7d0;
-      font-size: 0.88rem;
+    /* Hero */
+
+    .hero-topline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-size: 2rem;
+      line-height: 1.15;
+    }
+
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 2.4rem;
+      }
+    }
+
+    .hero-subtitle {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .hero-meta {
+      margin-top: 1.25rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 0.6rem;
+      max-width: 460px;
+      font-size: 0.9rem;
+    }
+
+    .hero-meta-item {
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-meta-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-value {
+      font-size: 0.96rem;
+      margin-top: 0.1rem;
+    }
+
+    .hero-note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-left: 2px solid var(--gold-soft);
+      padding-left: 0.75rem;
     }
   </style>
 </head>
 
 <body>
-<main>
-  <div class="page">
-    <div class="card">
-      <div class="card-inner">
+  <main>
+    <div class="page">
+      <div class="card">
+        <div class="card-inner">
 
-        <!-- HERO -->
-        <section id="hero">
-          <div class="hero-topline">
-            <div class="hero-dot"></div>
-            <span>Casino Birthday Night</span>
-          </div>
-
-          <h1 class="hero-title">Daniels&nbsp;Geburtstag</h1>
-
-          <p class="hero-note">
-            Du bist über meine Einladungskarte hier gelandet – perfekt. Auf dieser Seite findest du alle Infos und kannst direkt kurz zu- oder absagen.
-          </p>
-
-          <div class="hero-meta">
-            <div class="hero-meta-item"><div class="hero-meta-label">Datum</div><div class="hero-meta-value">23.01.2025</div></div>
-            <div class="hero-meta-item"><div class="hero-meta-label">Uhrzeit</div><div class="hero-meta-value">ab 20:00 Uhr</div></div>
-            <div class="hero-meta-item"><div class="hero-meta-label">Ort</div><div class="hero-meta-value">Schwabach</div></div>
-            <div class="hero-meta-item"><div class="hero-meta-label">Thema</div><div class="hero-meta-value">Edle Casino-Night</div></div>
-          </div>
-        </section>
-
-        <!-- INFOS -->
-        <section id="infos">
-          <div class="section-header">
-            <div class="section-icon">♣</div>
-            <div>
-              <div class="section-label">Infos</div>
-              <h2 class="section-title">Worum es geht</h2>
-            </div>
-          </div>
-
-          <p>
-            Ich feiere meinen Geburtstag im Casino-Stil – entspannt, gemütlich, und mit guter Stimmung. Ob Poker-Profi oder kompletter Neuling ist egal – Hauptsache du hast Lust auf eine gute Zeit.
-          </p>
-        </section>
-
-        <!-- COUNTDOWN -->
-        <section id="countdown-section">
-          <div id="countdown-box">
-            <div id="countdown-title">Countdown bis zum Start</div>
-            <div id="countdown">–</div>
-          </div>
-        </section>
-
-        <!-- ABLAUF -->
-        <section id="ablauf">
-          <div class="section-header">
-            <div class="section-icon">♦</div>
-            <div>
-              <div class="section-label">Ablauf</div>
-              <h2 class="section-title">Damit du ungefähr weißt, was passiert</h2>
-            </div>
-          </div>
-
-          <p class="muted">Der Abend ist locker und ungezwungen – nichts ist Pflicht. Zur Orientierung:</p>
-
-          <ul class="timeline">
-            <li><span class="timeline-label">ab 20:00 Uhr:</span> Ankunft, Begrüßungsdrinks & Ankommen</li>
-            <li><span class="timeline-label">danach:</span> Start der Casino-Spiele (Poker, Blackjack & Co.) – mit einfachen Erklärungen für Einsteiger</li>
-            <li><span class="timeline-label">später am Abend:</span> kleine Überraschung</li>
-            <li><span class="timeline-label">ab dann:</span> Offener Ausklang – Musik, Gespräche, wer will kann weiterspielen</li>
-          </ul>
-        </section>
-
-        <!-- DRESSCODE -->
-        <section id="dresscode">
-          <div class="section-header">
-            <div class="section-icon">♥</div>
-            <div>
-              <div class="section-label">Dresscode</div>
-              <h2 class="section-title">Casino Chic in Schwarz & Gold</h2>
-            </div>
-          </div>
-
-          <p>Der Dresscode ist „Casino Chic“ – gerne etwas schicker, aber trotzdem bequem. Farben wie Schwarz, Weiß, Gold oder dezentes Rot passen perfekt.</p>
-
-          <div class="dresscode-ideas">
-            <div class="dresscode-tag">Schwarzes Kleid + goldene Akzente</div>
-            <div class="dresscode-tag">Hemd in Schwarz/Weiß + dunkle Jeans oder Stoffhose</div>
-            <div class="dresscode-tag">Blazer oder Lederjacke</div>
-            <div class="dresscode-tag">Goldene Uhr / Schmuck / rote Details</div>
-          </div>
-        </section>
-
-        <!-- ANREISE -->
-        <section id="anreise">
-          <div class="section-header">
-            <div class="section-icon">♠</div>
-            <div>
-              <div class="section-label">Anreise</div>
-              <h2 class="section-title">Wie du hinkommst</h2>
-            </div>
-          </div>
-
-          <p>Die Party findet in Schwabach statt. Die genaue Adresse:</p>
-
-          <p class="address">Tuchergasse 2, 91126 Schwabach</p>
-
-          <div class="maps-wrapper">
-            <iframe
-              class="maps-iframe"
-              src="https://www.google.com/maps/embed?pb=!4v?key?pb=!1m18!1m12!1m3!1d2566.362364841278!2d11.017012!3d49.330883"
-              loading="lazy"></iframe>
-            <div class="maps-placeholder-note">Google Maps – echte Position eingebettet.</div>
-          </div>
-        </section>
-
-        <!-- FAQ -->
-        <section id="faq">
-          <div class="section-header">
-            <div class="section-icon">?</div>
-            <div>
-              <div class="section-label">FAQ</div>
-              <h2 class="section-title">Häufige Fragen</h2>
-            </div>
-          </div>
-
-          <div class="faq-list">
-
-            <div class="faq-item">
-              <div class="faq-item-question">Kann ich jemanden mitbringen?</div>
-              <p>Wenn du jemanden mitbringen möchtest, schreib es einfach bei der Zusage dazu.</p>
+          <!-- HERO / START -->
+          <section id="hero">
+            <div class="hero-topline">
+              <div class="hero-dot"></div>
+              <span>Casino Birthday Night</span>
             </div>
 
-            <div class="faq-item">
-              <div class="faq-item-question">Gibt es etwas zu essen?</div>
-              <p>Es gibt Snacks und ein bisschen Süßes. Wenn du Allergien hast, trag sie im Formular ein.</p>
+            <h1 class="hero-title">Daniels&nbsp;Geburtstag</h1>
+
+            <!-- Willkommenstext entfernt -->
+            <p class="hero-subtitle"></p>
+
+            <div class="hero-meta">
+              <div class="hero-meta-item">
+                <div class="hero-meta-label">Datum</div>
+                <div class="hero-meta-value">23.01.2025</div>
+              </div>
+              <div class="hero-meta-item">
+                <div class="hero-meta-label">Uhrzeit</div>
+                <div class="hero-meta-value">ab 20:00 Uhr</div>
+              </div>
+              <div class="hero-meta-item">
+                <div class="hero-meta-label">Ort</div>
+                <div class="hero-meta-value">Schwabach</div>
+              </div>
+              <div class="hero-meta-item">
+                <div class="hero-meta-label">Thema</div>
+                <div class="hero-meta-value">Edle Casino-Night</div>
+              </div>
             </div>
 
-            <div class="faq-item">
-              <div class="faq-item-question">Bis wann soll ich zusagen?</div>
-              <p>Am liebsten so früh wie möglich – spätestens einige Tage vorher.</p>
+            <p class="hero-note">
+              Du bist über meine Einladungskarte hier gelandet – perfekt.  
+              Auf dieser Seite findest du alle Infos und kannst kurz zu- oder absagen.
+            </p>
+
+            <div class="pill-row">
+              <div class="pill"><span>♠</span><span>Blackjack & Poker</span></div>
+              <div class="pill"><span>♣</span><span>Lockere Stimmung</span></div>
+              <div class="pill"><span>♦</span><span>Drinks & Snacks</span></div>
+              <div class="pill"><span>♥</span><span>Dresscode: Black & Gold</span></div>
+            </div>
+          </section>
+
+          <!-- INFOS -->
+          <section id="infos">
+            <div class="section-header">
+              <div class="section-icon">♣</div>
+              <div>
+                <div class="section-label">Infos</div>
+                <h2 class="section-title">Worum es geht</h2>
+              </div>
             </div>
 
-            <div class="faq-item">
-              <div class="faq-item-question">Gibt es Geschenk-Wünsche?</div>
-              <p>
-                Deine Anwesenheit ist mir am wichtigsten.  
-                Wenn du trotzdem etwas mitbringen möchtest:<br><br>
-                <b>Ein kleines „Startkapital“ für den Casino-Abend bringt immer Glück –  
-                und ich verspreche: Bei mir verlierst du es garantiert nicht. 😉</b>
-              </p>
+            <p>
+              Ich feiere meinen Geburtstag im Casino-Stil – entspannt, gemütlich, und mit guter Stimmung.
+            </p>
+            <p>
+              Ob Poker-Profi oder kompletter Neuling: Hauptsache du hast Lust auf einen schönen Abend.
+            </p>
+          </section>
+         
+          <!-- COUNTDOWN -->
+          <section id="countdown-section">
+            <div class="section-header">
+              <div class="section-icon">⏳</div>
+              <div>
+                <div class="section-label">Countdown</div>
+                <h2 class="section-title">Bis zum Start der Casino Night</h2>
+              </div>
             </div>
 
-          </div>
-        </section>
-
-        <!-- RSVP -->
-        <section id="rsvp">
-          <div class="section-header">
-            <div class="section-icon">✓</div>
-            <div>
-              <div class="section-label">RSVP</div>
-              <h2 class="section-title">Sag mir kurz Bescheid</h2>
+            <div id="countdown-box"
+              style="
+                margin-top:1rem;
+                padding:1.8rem;
+                border-radius:20px;
+                background: radial-gradient(circle at top left, #15151f, #050509 55%);
+                border:1px solid rgba(255,255,255,0.12);
+                box-shadow:0 18px 40px rgba(0,0,0,0.6);
+                text-align:center;
+              ">
+              <div id="countdown"
+                style="
+                  font-size:1.8rem;
+                  letter-spacing:0.05em;
+                  font-weight:600;
+                ">
+                Lade Countdown…
+              </div>
+              <p class="muted" style="margin-top:0.5rem;">Start am 23.01.2025 um 20:00 Uhr</p>
             </div>
-          </div>
+          </section>
 
-          <p>Bitte fülle das Formular aus, damit ich planen kann.</p>
+          <!-- ABLAUF -->
+          <section id="ablauf">
+            <div class="section-header">
+              <div class="section-icon">♦</div>
+              <div>
+                <div class="section-label">Ablauf</div>
+                <h2 class="section-title">Damit du ungefähr weißt, was passiert</h2>
+              </div>
+            </div>
 
-          <div class="form-wrapper">
-            <form id="rsvp-form">
+            <p class="muted">Der Abend ist locker und ungezwungen – nichts ist Pflicht.</p>
 
-              <div class="field">
-                <label for="name">Name<span class="required">*</span></label>
-                <input type="text" id="name" name="name" required />
+            <ul class="timeline">
+              <li>
+                <span class="timeline-label">ab 20:00 Uhr:</span>
+                Ankunft, Begrüßungsdrinks &amp; Ankommen
+              </li>
+              <li>
+                <span class="timeline-label">danach:</span>
+                Start der Casino-Spiele (Poker, Blackjack &amp; Co.) – mit einfachen Erklärungen für Einsteiger
+              </li>
+              <li>
+                <span class="timeline-label">später am Abend:</span>
+                kleine Überraschung (kein Kuchen 😉)
+              </li>
+              <li>
+                <span class="timeline-label">ab dann:</span>
+                Offener Ausklang – Musik, Gespräche &amp; wer will spielt weiter
+              </li>
+            </ul>
+          </section>
+
+          <!-- DRESSCODE -->
+          <section id="dresscode">
+            <div class="section-header">
+              <div class="section-icon">♥</div>
+              <div>
+                <div class="section-label">Dresscode</div>
+                <h2 class="section-title">Casino Chic in Schwarz &amp; Gold</h2>
+              </div>
+            </div>
+
+            <p>
+              Gerne minimal schick – Schwarz, Weiß, Gold oder ein kleiner roter Akzent passen perfekt.
+            </p>
+
+            <div class="dresscode-ideas">
+              <div class="dresscode-tag">Schwarzes Kleid + goldene Akzente</div>
+              <div class="dresscode-tag">Hemd + Stoffhose oder Jeans</div>
+              <div class="dresscode-tag">Blazer oder Lederjacke</div>
+              <div class="dresscode-tag">Goldene Uhr / Schmuck</div>
+            </div>
+
+            <p class="small-note">Wenn du nichts Passendes hast: Kein Stress – komm einfach wie du dich wohlfühlst.</p>
+          </section>
+
+          <!-- ANREISE -->
+          <section id="anreise">
+            <div class="section-header">
+              <div class="section-icon">♠</div>
+              <div>
+                <div class="section-label">Anreise</div>
+                <h2 class="section-title">Wie du hinkommst</h2>
+              </div>
+            </div>
+
+            <p>Die Party findet in Schwabach statt. Hier die genaue Adresse:</p>
+
+            <p class="address">Tuchergasse 2, 91126 Schwabach</p>
+
+            <div class="maps-wrapper">
+              <iframe
+                class="maps-iframe"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2663.7798576023964!2d11.018651676771713!3d49.329859770774985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479f57dd3c39f23f%3A0xaa5b47a032e6cd31!2sTuchergasse%202%2C%2091126%20Schwabach!5e0!3m2!1sde!2sde!4v1706123456789"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </section>
+
+          <!-- FAQ -->
+          <section id="faq">
+            <div class="section-header">
+              <div class="section-icon">?</div>
+              <div>
+                <div class="section-label">FAQ</div>
+                <h2 class="section-title">Häufige Fragen</h2>
+              </div>
+            </div>
+
+            <div class="faq-list">
+
+              <div class="faq-item">
+                <div class="faq-item-question">Kann ich jemanden mitbringen?</div>
+                <p>Klar – einfach im Formular erwähnen.</p>
               </div>
 
-              <div class="field">
-                <span>Teilnahme<span class="required">*</span></span>
-                <div class="radio-group">
-                  <label class="radio-pill">
-                    <input type="radio" name="teilnahme" value="komme" required />
-                    Ich komme
-                  </label>
-
-                  <label class="radio-pill">
-                    <input type="radio" name="teilnahme" value="komme_nicht" />
-                    Ich kann leider nicht
-                  </label>
-                </div>
+              <div class="faq-item">
+                <div class="faq-item-question">Gibt es etwas zu essen?</div>
+                <p>Snacks & ein bisschen Süßes – trag Allergien gerne ein.</p>
               </div>
 
-              <button type="submit">Zusage senden</button>
-
-              <div id="status-message" class="status-message">
-                Danke! Deine Antwort ist angekommen.
+              <div class="faq-item">
+                <div class="faq-item-question">Bis wann soll ich zusagen?</div>
+                <p>Am liebsten so früh wie möglich – spätestens einige Tage vorher.</p>
               </div>
 
+              <div class="faq-item">
+                <div class="faq-item-question">Gibt es Geschenk-Wünsche?</div>
+                <p>
+                  Deine Anwesenheit ist mir am wichtigsten.  
+                  Wenn du trotzdem etwas mitbringen möchtest:
+                  <br/><br/>
+                  <strong>
+                  Ein kleines „Startkapital“ für den Casino-Abend bringt Glück –  
+                  und ich verspreche: Bei mir verlierst du es garantiert nicht. 😉💸
+                  </strong>
+                </p>
+              </div>
+
+            </div>
+          </section>
+
+                    <!-- RSVP -->
+          <section id="rsvp">
+            <div class="section-header">
+              <div class="section-icon">✓</div>
+              <div>
+                <div class="section-label">RSVP</div>
+                <h2 class="section-title">Sag mir kurz Bescheid</h2>
+              </div>
+            </div>
+
+            <p>Bitte fülle das Formular aus, damit ich planen kann.</p>
+
+            <form id="rsvp-form" onsubmit="event.preventDefault(); submitForm();">
+              <label class="form-label">Name*</label>
+              <input type="text" id="name" class="form-input" required />
+
+              <label class="form-label">Teilnahme*</label>
+              <div class="form-radio-group">
+                <label><input type="radio" name="teilnahme" value="ja" required /> Ich komme</label>
+                <label><input type="radio" name="teilnahme" value="nein" required /> Ich kann leider nicht</label>
+              </div>
+
+              <label class="form-label">Nachricht (optional)</label>
+              <textarea id="message" class="form-input" placeholder="z. B. wenn du jemanden mitbringst, Allergien hast etc."></textarea>
+
+              <button type="submit" class="form-button">Zusage senden</button>
             </form>
-          </div>
-        </section>
 
-      </div>
-    </div>
-  </div>
-</main>
+            <p id="rsvp-success" style="display:none; margin-top:1rem; color:#6aff6a; font-weight:600;">
+              Danke! Deine Antwort ist angekommen.
+            </p>
+          </section>
 
-<script>
-/* Countdown */
-const countdownEl = document.getElementById("countdown");
-const target = new Date("2025-01-23T20:00:00");
+        </div> <!-- content-wrapper -->
+      </main>
 
-function updateCountdown() {
-  const now = new Date();
-  const diff = target - now;
+      <footer class="footer">
+        <p class="footer-text">© 2025 Daniels Casino Birthday Night</p>
+      </footer>
 
-  if (diff <= 0) {
-    countdownEl.textContent = "Es geht los! 🎉";
-    return;
-  }
+    </div> <!-- page-container -->
 
-  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const m = Math.floor((diff / (1000 * 60)) % 60);
-  const s = Math.floor((diff / 1000) % 60);
+    <!-- COUNTDOWN SCRIPT -->
+    <script>
+      function updateCountdown() {
+        const eventDate = new Date("Jan 23, 2025 20:00:00").getTime();
+        const now = new Date().getTime();
+        const distance = eventDate - now;
 
-  countdownEl.textContent = `${d} Tage · ${h} Std · ${m} Min · ${s} Sek`;
-}
+        if (distance < 0) {
+          document.getElementById("countdown").innerHTML = "Es geht los! 🎉";
+          return;
+        }
 
-setInterval(updateCountdown, 1000);
-updateCountdown();
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-/* Fake form submit */
-document.getElementById("rsvp-form").addEventListener("submit", e => {
-  e.preventDefault();
-  document.getElementById("status-message").style.display = "block";
-});
-</script>
+        document.getElementById("countdown").innerHTML =
+          days + "T " +
+          hours + "H " +
+          minutes + "M " +
+          seconds + "S";
+      }
 
-</body>
+      setInterval(updateCountdown, 1000);
+
+      // Fake submit function (no email needed)
+      function submitForm() {
+        document.getElementById("rsvp-success").style.display = "block";
+        document.getElementById("rsvp-form").reset();
+      }
+    </script>
+
+  </body>
 </html>
