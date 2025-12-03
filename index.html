@@ -746,7 +746,8 @@
             </p>
 
             <div class="form-wrapper">
-              <form id="rsvp-form" method="POST" action="https://example.com/rsvp">
+             <form id="rsvp-form" method="POST" action="https://formspree.io/f/xblnyvwg">
+
                 <!--
                   HINWEIS:
                   Ersetze die action-URL oben durch den echten Endpoint
@@ -875,47 +876,41 @@
   </main>
 
   <script>
-    (function () {
-      const form = document.getElementById("rsvp-form");
-      const statusOk = document.getElementById("status-message");
-      const statusError = document.getElementById("status-message-error");
+  (function () {
+    const form = document.getElementById("rsvp-form");
+    const statusOk = document.getElementById("status-message");
+    const statusError = document.getElementById("status-message-error");
 
-      if (!form) return;
+    if (!form) return;
 
-      form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Verhindert Seitenwechsel und ermöglicht Testen ohne echten Endpoint
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
 
-        statusOk.style.display = "none";
-        statusError.style.display = "none";
+      statusOk.style.display = "none";
+      statusError.style.display = "none";
 
-        const formData = new FormData(form);
+      const formData = new FormData(form);
 
-        // HINWEIS:
-        // Wenn du später einen echten Endpoint verwendest und das Formular
-        // wirklich absenden möchtest, kannst du diesen fetch-Aufruf anpassen
-        // oder die event.preventDefault()-Zeile oben entfernen.
-        // Für jetzt simulieren wir eine erfolgreiche Antwort.
-        fetch(form.action || "https://example.com/rsvp", {
+      try {
+        const response = await fetch(form.action, {
           method: "POST",
           body: formData,
-          mode: "no-cors"
-        })
-          .then(function () {
-            // Simuliert eine erfolgreiche Rückmeldung
-            form.reset();
-            statusOk.style.display = "block";
-            statusError.style.display = "none";
-            // Seite leicht nach unten scrollen, damit die Bestätigung gut sichtbar ist
-            statusOk.scrollIntoView({ behavior: "smooth", block: "center" });
-          })
-          .catch(function () {
-            // Selbst wenn etwas schiefläuft, bekommt der Gast eine Rückmeldung
-            statusOk.style.display = "block";
-            statusError.style.display = "none";
-            statusOk.scrollIntoView({ behavior: "smooth", block: "center" });
-          });
-      });
-    })();
-  </script>
+          headers: { "Accept": "application/json" }
+        });
+
+        if (response.ok) {
+          form.reset();
+          statusOk.style.display = "block";
+          statusOk.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+          throw new Error();
+        }
+      } catch (error) {
+        statusError.style.display = "block";
+        statusError.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+  })();
+</script>
 </body>
 </html>
